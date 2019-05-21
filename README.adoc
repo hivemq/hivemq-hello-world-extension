@@ -45,3 +45,11 @@ Now read the {hivemq-extension-docs-link}[HiveMQ Extension Documentation^] to se
 === Need help?
 
 If you encounter any problems, we are happy to help. The best place to get in contact is our {hivemq-support}[support^].
+
+= Contributing
+
+If you want to contribute to HiveMQ Hello World Extension, see the link:CONTRIBUTING.md[contribution guidelines].
+
+= License
+
+HiveMQ Hello World Extension is licensed under the `APACHE LICENSE, VERSION 2.0`. A copy of the license can be found link:LICENSE.txt[here].
