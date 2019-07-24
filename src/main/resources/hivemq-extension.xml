@@ -19,5 +19,6 @@
     <id>${artifactId}</id>
     <name>${extension.name}</name>
     <version>${version}</version>
-    <author>dc-square-GmbH</author>
+    <author>${extension.author}</author>
+    <priority>1000</priority>
 </hivemq-extension>
