@@ -21,7 +21,7 @@
 
     <groupId>com.hivemq.extension</groupId>
     <artifactId>hivemq-hello-world-extension</artifactId>
-    <version>4.2.0</version>
+    <version>4.3.0</version>
 
     <description>HiveMQ 4 Hello World Extension - a simple reference for all extension developers</description>
 
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>com.hivemq</groupId>
             <artifactId>hivemq-extension-sdk</artifactId>
-            <version>4.2.0</version>
+            <version>4.3.0</version>
         </dependency>
     </dependencies>
 
