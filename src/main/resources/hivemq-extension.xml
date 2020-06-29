@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
- ~ Copyright 2018 dc-square GmbH
+ ~ Copyright 2018-present HiveMQ GmbH
  ~
  ~  Licensed under the Apache License, Version 2.0 (the "License");
  ~  you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@
 
 <hivemq-extension>
     <id>${artifactId}</id>
-    <name>${extension.name}</name>
     <version>${version}</version>
+    <name>${extension.name}</name>
     <author>${extension.author}</author>
     <priority>1000</priority>
 </hivemq-extension>
