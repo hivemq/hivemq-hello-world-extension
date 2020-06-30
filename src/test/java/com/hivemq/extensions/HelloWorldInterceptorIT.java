@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.hivemq;
+package com.hivemq.extensions;
 
 import com.hivemq.client.mqtt.MqttGlobalPublishFilter;
 import com.hivemq.client.mqtt.mqtt5.Mqtt5BlockingClient;
