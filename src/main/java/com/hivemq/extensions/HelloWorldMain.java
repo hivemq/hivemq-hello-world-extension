@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 dc-square GmbH
+ * Copyright 2018-present HiveMQ GmbH
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import com.hivemq.extension.sdk.api.annotations.NotNull;
 import com.hivemq.extension.sdk.api.events.EventRegistry;
 import com.hivemq.extension.sdk.api.parameter.*;
 import com.hivemq.extension.sdk.api.services.Services;
+import com.hivemq.extension.sdk.api.services.intializer.InitializerRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,6 +43,7 @@ public class HelloWorldMain implements ExtensionMain {
         try {
 
             addClientLifecycleEventListener();
+            addPublishModifier();
 
             final ExtensionInformation extensionInformation = extensionStartInput.getExtensionInformation();
             log.info("Started " + extensionInformation.getName() + ":" + extensionInformation.getVersion());
@@ -69,5 +71,14 @@ public class HelloWorldMain implements ExtensionMain {
         eventRegistry.setClientLifecycleEventListener(input -> helloWorldListener);
 
     }
+
+    private void addPublishModifier() {
+        final InitializerRegistry initializerRegistry = Services.initializerRegistry();
+
+        final HelloWorldInterceptor helloWorldInterceptor = new HelloWorldInterceptor();
+
+        initializerRegistry.setClientInitializer((initializerInput, clientContext) -> clientContext.addPublishInboundInterceptor(helloWorldInterceptor));
+    }
+
 
 }
