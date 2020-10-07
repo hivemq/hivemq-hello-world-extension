@@ -11,7 +11,7 @@
 
 *Type*: Demonstration Extension
 
-*Version*: 4.4.0
+*Version*: 4.4.2
 
 *License*: Apache License Version 2.0
 
@@ -31,7 +31,7 @@ to grasp the core concepts of HiveMQ extension development.
 
 . Clone this repository into a Java 11 maven project.
 . Run `mvn package` goal from Maven to build the extension.
-. Move the file: "target/hivemq-hello-world-extension-4.4.0-distribution.zip" to the directory: "HIVEMQ_HOME/extensions"
+. Move the file: "target/hivemq-hello-world-extension-4.4.2-distribution.zip" to the directory: "HIVEMQ_HOME/extensions"
 . Unzip the file.
 . Start HiveMQ.
 
