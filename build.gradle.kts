@@ -7,9 +7,6 @@ repositories {
     mavenCentral()
 }
 
-
-/* ******************** metadata ******************** */
-
 group = "com.hivemq.extensions"
 description = "HiveMQ Hello World Extension"
 version = "4.4.4"
