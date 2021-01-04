@@ -1,5 +1,4 @@
 rootProject.name = "HelloWorldExtension"
-rootProject.buildFileName = "build.gradle.kts"
 
 pluginManagement {
     plugins {
