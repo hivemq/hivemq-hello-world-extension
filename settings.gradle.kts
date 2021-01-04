@@ -1,4 +1,4 @@
-rootProject.name = "HelloWorldExtension"
+rootProject.name = "hivemq-hello-world-extension"
 
 pluginManagement {
     plugins {
