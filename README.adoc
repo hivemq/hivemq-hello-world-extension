@@ -21,17 +21,14 @@ This Hello World extension sets a ClientLifecycleEventListener which logs
 the MQTT Version and identifier of every connecting and disconnecting client and
 registers a PublishInboundInterceptor to modify the payload of every Publish with the topic 'hello/world' to 'Hello World!'.
 
-There is {hivemq-extension-docs-archetype-link}[a Maven Archetype available]
-to generate a basic extension from the IDE.
-
 We strongly recommend to read the {hivemq-extension-docs-link}[HiveMQ Extension Documentation]
 to grasp the core concepts of HiveMQ extension development.
 
 == Installation
 
-. Clone this repository into a Java 11 maven project.
-. Run `mvn package` goal from Maven to build the extension.
-. Move the file: "target/hivemq-hello-world-extension-4.4.4-distribution.zip" to the directory: "HIVEMQ_HOME/extensions"
+. Clone this repository into a Java 11 Gradle project.
+. Execute Gradle task 'hivemqExtensionZip' from Gradle to build the extension. (./gradlew hivemqExtensionZip )
+. Move the file: "build/hivemq-extension/HelloWorldExtension-4.4.4.zip" to the directory: "HIVEMQ_HOME/extensions"
 . Unzip the file.
 . Start HiveMQ.
 
