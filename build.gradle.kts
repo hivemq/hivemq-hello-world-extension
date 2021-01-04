@@ -21,7 +21,7 @@ hivemqExtension {
     priority = 1000
     startPriority = 1000
     mainClass = "$group.HelloWorldMain"
-    sdkVersion = "4.4.3"
+    sdkVersion = "$version"
 }
 
 dependencies {
@@ -49,4 +49,3 @@ tasks.runHivemqWithExtension {
         enabled.set(false)
     }
 }
-
