@@ -18,9 +18,9 @@ hivemqExtension {
 }
 
 dependencies {
-    testImplementation ("com.hivemq:hivemq-mqtt-client:1.2.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
+    testImplementation("com.hivemq:hivemq-mqtt-client:1.2.1")
     testImplementation("com.hivemq:hivemq-testcontainer-junit5:1.1.1")
 }
 
