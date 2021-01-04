@@ -25,10 +25,6 @@ hivemqExtension {
 }
 
 dependencies {
-    hivemqProvided ("ch.qos.logback:logback-classic:1.2.3")
-}
-
-dependencies {
     testImplementation ("com.hivemq:hivemq-mqtt-client:1.2.1")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.6.1")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
