@@ -7,7 +7,6 @@ plugins {
 
 group = "com.hivemq.extensions"
 description = "HiveMQ Hello World Extension"
-version = "4.4.4"
 
 hivemqExtension {
     name = "HiveMQ Hello World Extension"
@@ -19,10 +18,10 @@ hivemqExtension {
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
-    testImplementation("com.hivemq:hivemq-mqtt-client:1.2.1")
-    testImplementation("com.hivemq:hivemq-testcontainer-junit5:1.3.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${property("junit-jupiter.version")}")
+    testImplementation("com.hivemq:hivemq-mqtt-client:${property("hivemq-mqtt-client.version")}")
+    testImplementation("com.hivemq:hivemq-testcontainer-junit5:${property("hivemq-testcontainer.version")}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${property("junit-jupiter.version")}")
 }
 
 tasks.test {
