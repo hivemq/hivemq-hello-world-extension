@@ -1,4 +1,3 @@
-
 plugins {
     id("com.hivemq.extension")
     id("com.github.hierynomus.license")
@@ -22,8 +21,12 @@ hivemqExtension {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.1")
     testImplementation("com.hivemq:hivemq-mqtt-client:1.2.1")
-    testImplementation("com.hivemq:hivemq-testcontainer-junit5:1.1.1")
+    testImplementation("com.hivemq:hivemq-testcontainer-junit5:1.3.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.1")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 val prepareAsciidoc by tasks.registering(Sync::class) {
