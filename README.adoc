@@ -9,7 +9,7 @@
 
 *Extension Type*: Demonstration
 
-*Version*: 4.4.4
+*Version*: 4.5.0
 
 *License*: Apache License 2.0
 
@@ -24,7 +24,7 @@ We strongly recommend to read the {hivemq-extension-docs}[HiveMQ Extension Docum
 
 . Clone this repository into a Java 11 Gradle project.
 . Execute the Gradle task `hivemqExtensionZip` to build the extension.
-. Move the file: `build/hivemq-extension/hivemq-hello-world-extension-4.4.4.zip` to the directory: `HIVEMQ_HOME/extensions`
+. Move the file: `build/hivemq-extension/hivemq-hello-world-extension-4.5.0.zip` to the directory: `HIVEMQ_HOME/extensions`
 . Unzip the file.
 . Start HiveMQ.
 
