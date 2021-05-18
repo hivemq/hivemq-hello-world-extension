@@ -16,6 +16,10 @@ hivemqExtension {
     sdkVersion = "$version"
 }
 
+tasks.hivemqExtensionResources {
+    from("LICENSE")
+}
+
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${property("junit-jupiter.version")}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
@@ -27,16 +31,13 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.hivemqExtensionResources {
-    from("LICENSE")
-}
-
 license {
     header = rootDir.resolve("HEADER")
     mapping("java", "SLASHSTAR_STYLE")
 }
 
-//preparation and tasks to run & debug Hello World Extension locally
+/* ******************** debugging ******************** */
+
 val unzipHivemq by tasks.registering(Sync::class) {
     from(zipTree(rootDir.resolve("/your/path/to/hivemq-<VERSION>.zip")))
     into({ temporaryDir })
