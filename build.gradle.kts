@@ -2,7 +2,6 @@ plugins {
     id("com.hivemq.extension")
     id("com.github.hierynomus.license")
     id("com.github.sgtsilvio.gradle.utf8")
-    id("org.asciidoctor.jvm.convert")
 }
 
 group = "com.hivemq.extensions"
@@ -19,28 +18,17 @@ hivemqExtension {
 
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${property("junit-jupiter.version")}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testImplementation("com.hivemq:hivemq-mqtt-client:${property("hivemq-mqtt-client.version")}")
     testImplementation("com.hivemq:hivemq-testcontainer-junit5:${property("hivemq-testcontainer.version")}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${property("junit-jupiter.version")}")
 }
 
 tasks.test {
     useJUnitPlatform()
 }
 
-val prepareAsciidoc by tasks.registering(Sync::class) {
-    from("README.adoc").into({ temporaryDir })
-}
-
-tasks.asciidoctor {
-    dependsOn(prepareAsciidoc)
-    sourceDir(prepareAsciidoc.map { it.destinationDir })
-}
-
 tasks.hivemqExtensionResources {
     from("LICENSE")
-    from("README.adoc") { rename { "README.txt" } }
-    from(tasks.asciidoctor)
 }
 
 license {
