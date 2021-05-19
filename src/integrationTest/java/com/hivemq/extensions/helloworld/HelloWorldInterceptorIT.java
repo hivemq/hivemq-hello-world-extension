@@ -47,7 +47,7 @@ class HelloWorldInterceptorIT {
     @RegisterExtension
     public final @NotNull HiveMQTestContainerExtension extension =
             new HiveMQTestContainerExtension()
-                    .withExtension(new File("build/hivemq-extension"));
+                    .withExtension(new File("build/hivemq-extension-test/hivemq-hello-world-extension"));
 
     @Test
     @Timeout(value = 5, unit = TimeUnit.MINUTES)

@@ -55,6 +55,14 @@ dependencies {
     integrationTestImplementation("com.hivemq:hivemq-testcontainer-junit5:${property("hivemq-testcontainer.version")}")
 }
 
+val prepareExtensionTest by tasks.registering(Sync::class) {
+    group = "hivemq extension"
+    description = "Prepares the extension for integration testing."
+
+    from(tasks.hivemqExtensionZip.map { extensionZip -> zipTree(extensionZip.archiveFile) })
+    into(buildDir.resolve("hivemq-extension-test"))
+}
+
 val integrationTest by tasks.registering(Test::class) {
     group = "verification"
     description = "Runs integration tests."
@@ -62,7 +70,7 @@ val integrationTest by tasks.registering(Test::class) {
     testClassesDirs = sourceSets["integrationTest"].output.classesDirs
     classpath = sourceSets["integrationTest"].runtimeClasspath
     shouldRunAfter(tasks.test)
-    dependsOn("hivemqExtensionZip")
+    dependsOn(prepareExtensionTest)
 }
 
 tasks.check { dependsOn(integrationTest) }
