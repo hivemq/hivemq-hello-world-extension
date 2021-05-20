@@ -37,7 +37,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * This tests the functionality of the {@link HelloWorldInterceptor}.
  * It uses the HiveMQ Testcontainer to automatically package and deploy this extension inside a HiveMQ docker container.
  *
- * This integration Test MUST be executed by gradle as the extension is build by the 'hivemqExtensionZip' task.
+ * This integration test MUST be executed by Gradle as the extension is built by the 'hivemqExtensionZip' task.
  *
  * @author Yannick Weber
  * @since 4.3.1

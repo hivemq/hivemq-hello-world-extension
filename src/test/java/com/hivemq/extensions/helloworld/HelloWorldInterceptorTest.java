@@ -17,7 +17,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Yannick Weber
- * @since 4.6.1
  */
 class HelloWorldInterceptorTest {
 
