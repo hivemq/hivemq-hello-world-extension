@@ -23,12 +23,11 @@ tasks.hivemqExtensionResources {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${property("junit-jupiter.version")}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("org.mockito:mockito-all:${property("mockito.version")}")
+    testImplementation("org.mockito:mockito-core:${property("mockito.version")}")
 }
 
-tasks.test {
+tasks.withType<Test> {
     useJUnitPlatform()
-    dependsOn("hivemqExtensionZip")
 }
 
 license {
@@ -66,7 +65,6 @@ val prepareExtensionTest by tasks.registering(Sync::class) {
 val integrationTest by tasks.registering(Test::class) {
     group = "verification"
     description = "Runs integration tests."
-    useJUnitPlatform()
     testClassesDirs = sourceSets["integrationTest"].output.classesDirs
     classpath = sourceSets["integrationTest"].runtimeClasspath
     shouldRunAfter(tasks.test)
