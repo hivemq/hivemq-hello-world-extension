@@ -26,6 +26,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
@@ -36,6 +37,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * This tests the functionality of the {@link HelloWorldInterceptor}.
  * It uses the HiveMQ Testcontainer to automatically package and deploy this extension inside a HiveMQ docker container.
  *
+ * This integration test MUST be executed by Gradle as the extension is built by the 'hivemqExtensionZip' task.
+ *
  * @author Yannick Weber
  * @since 4.3.1
  */
@@ -44,7 +47,7 @@ class HelloWorldInterceptorIT {
     @RegisterExtension
     public final @NotNull HiveMQTestContainerExtension extension =
             new HiveMQTestContainerExtension()
-                    .withExtension(GradleHiveMQExtensionSupplier.direct().get());
+                    .withExtension(new File("build/hivemq-extension-test/hivemq-hello-world-extension"));
 
     @Test
     @Timeout(value = 5, unit = TimeUnit.MINUTES)

@@ -23,11 +23,10 @@ tasks.hivemqExtensionResources {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${property("junit-jupiter.version")}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("com.hivemq:hivemq-mqtt-client:${property("hivemq-mqtt-client.version")}")
-    testImplementation("com.hivemq:hivemq-testcontainer-junit5:${property("hivemq-testcontainer.version")}")
+    testImplementation("org.mockito:mockito-core:${property("mockito.version")}")
 }
 
-tasks.test {
+tasks.withType<Test> {
     useJUnitPlatform()
 }
 
@@ -35,6 +34,44 @@ license {
     header = rootDir.resolve("HEADER")
     mapping("java", "SLASHSTAR_STYLE")
 }
+
+/* ******************** integration Tests ******************** */
+
+sourceSets.create("integrationTest") {
+    compileClasspath += sourceSets.main.get().output
+    runtimeClasspath += sourceSets.main.get().output
+}
+
+val integrationTestImplementation: Configuration by configurations.getting {
+    extendsFrom(configurations.testImplementation.get())
+}
+val integrationTestRuntimeOnly: Configuration by configurations.getting {
+    extendsFrom(configurations.testRuntimeOnly.get())
+}
+
+dependencies {
+    integrationTestImplementation("com.hivemq:hivemq-mqtt-client:${property("hivemq-mqtt-client.version")}")
+    integrationTestImplementation("com.hivemq:hivemq-testcontainer-junit5:${property("hivemq-testcontainer.version")}")
+}
+
+val prepareExtensionTest by tasks.registering(Sync::class) {
+    group = "hivemq extension"
+    description = "Prepares the extension for integration testing."
+
+    from(tasks.hivemqExtensionZip.map { extensionZip -> zipTree(extensionZip.archiveFile) })
+    into(buildDir.resolve("hivemq-extension-test"))
+}
+
+val integrationTest by tasks.registering(Test::class) {
+    group = "verification"
+    description = "Runs integration tests."
+    testClassesDirs = sourceSets["integrationTest"].output.classesDirs
+    classpath = sourceSets["integrationTest"].runtimeClasspath
+    shouldRunAfter(tasks.test)
+    dependsOn(prepareExtensionTest)
+}
+
+tasks.check { dependsOn(integrationTest) }
 
 /* ******************** debugging ******************** */
 
