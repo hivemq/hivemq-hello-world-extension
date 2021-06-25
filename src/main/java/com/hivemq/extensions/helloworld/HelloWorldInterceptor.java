@@ -41,5 +41,4 @@ public class HelloWorldInterceptor implements PublishInboundInterceptor {
             publishPacket.setPayload(payload);
         }
     }
-
 }

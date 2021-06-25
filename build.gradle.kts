@@ -32,17 +32,19 @@ tasks.withType<Test>().configureEach {
     useJUnitPlatform()
 }
 
-license {
-    header = rootDir.resolve("HEADER")
-    mapping("java", "SLASHSTAR_STYLE")
-}
-
 /* ******************** integration test ******************** */
 
 dependencies {
     integrationTestImplementation("com.hivemq:hivemq-mqtt-client:${property("hivemq-mqtt-client.version")}")
     integrationTestImplementation("com.hivemq:hivemq-testcontainer-junit5:${property("hivemq-testcontainer.version")}")
     integrationTestImplementation("ch.qos.logback:logback-classic:${property("logback-classic.version")}")
+}
+
+/* ******************** checks ******************** */
+
+license {
+    header = rootDir.resolve("HEADER")
+    mapping("java", "SLASHSTAR_STYLE")
 }
 
 /* ******************** debugging ******************** */
