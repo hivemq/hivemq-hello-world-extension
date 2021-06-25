@@ -20,6 +20,8 @@ hivemqExtension.resources {
     from("LICENSE")
 }
 
+/* ******************** test ******************** */
+
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${property("junit-jupiter.version")}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
@@ -35,7 +37,7 @@ license {
     mapping("java", "SLASHSTAR_STYLE")
 }
 
-/* ******************** integration Tests ******************** */
+/* ******************** integration test ******************** */
 
 dependencies {
     integrationTestImplementation("com.hivemq:hivemq-mqtt-client:${property("hivemq-mqtt-client.version")}")
