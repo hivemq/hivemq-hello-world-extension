@@ -14,10 +14,10 @@ hivemqExtension {
     startPriority.set(1000)
     mainClass.set("$group.helloworld.HelloWorldMain")
     sdkVersion.set("$version")
-}
 
-hivemqExtension.resources {
-    from("LICENSE")
+    resources {
+        from("LICENSE")
+    }
 }
 
 /* ******************** test ******************** */
