@@ -28,7 +28,7 @@ dependencies {
     testImplementation("org.mockito:mockito-core:${property("mockito.version")}")
 }
 
-tasks.withType<Test> {
+tasks.withType<Test>().configureEach {
     useJUnitPlatform()
 }
 
