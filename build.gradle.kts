@@ -8,15 +8,15 @@ group = "com.hivemq.extensions"
 description = "HiveMQ 4 Hello World Extension - a simple reference for all extension developers"
 
 hivemqExtension {
-    name = "Hello World Extension"
-    author = "HiveMQ"
-    priority = 1000
-    startPriority = 1000
-    mainClass = "$group.helloworld.HelloWorldMain"
-    sdkVersion = "$version"
+    name.set("Hello World Extension")
+    author.set("HiveMQ")
+    priority.set(1000)
+    startPriority.set(1000)
+    mainClass.set("$group.helloworld.HelloWorldMain")
+    sdkVersion.set("$version")
 }
 
-tasks.hivemqExtensionResources {
+hivemqExtension.resources {
     from("LICENSE")
 }
 
@@ -37,51 +37,16 @@ license {
 
 /* ******************** integration Tests ******************** */
 
-sourceSets.create("integrationTest") {
-    compileClasspath += sourceSets.main.get().output
-    runtimeClasspath += sourceSets.main.get().output
-}
-
-val integrationTestImplementation: Configuration by configurations.getting {
-    extendsFrom(configurations.testImplementation.get())
-}
-val integrationTestRuntimeOnly: Configuration by configurations.getting {
-    extendsFrom(configurations.testRuntimeOnly.get())
-}
-
 dependencies {
     integrationTestImplementation("com.hivemq:hivemq-mqtt-client:${property("hivemq-mqtt-client.version")}")
     integrationTestImplementation("com.hivemq:hivemq-testcontainer-junit5:${property("hivemq-testcontainer.version")}")
+    integrationTestImplementation("ch.qos.logback:logback-classic:${property("logback-classic.version")}")
 }
-
-val prepareExtensionTest by tasks.registering(Sync::class) {
-    group = "hivemq extension"
-    description = "Prepares the extension for integration testing."
-
-    from(tasks.hivemqExtensionZip.map { extensionZip -> zipTree(extensionZip.archiveFile) })
-    into(buildDir.resolve("hivemq-extension-test"))
-}
-
-val integrationTest by tasks.registering(Test::class) {
-    group = "verification"
-    description = "Runs integration tests."
-    testClassesDirs = sourceSets["integrationTest"].output.classesDirs
-    classpath = sourceSets["integrationTest"].runtimeClasspath
-    shouldRunAfter(tasks.test)
-    dependsOn(prepareExtensionTest)
-}
-
-tasks.check { dependsOn(integrationTest) }
 
 /* ******************** debugging ******************** */
 
-val unzipHivemq by tasks.registering(Sync::class) {
-    from(zipTree(rootDir.resolve("/your/path/to/hivemq-<VERSION>.zip")))
-    into({ temporaryDir })
-}
-
 tasks.prepareHivemqHome {
-    hivemqFolder.set(unzipHivemq.map { it.destinationDir.resolve("hivemq-<VERSION>") } as Any)
+    hivemqHomeDirectory.set(file("/your/path/to/hivemq-<VERSION>.zip"))
 }
 
 tasks.runHivemqWithExtension {
