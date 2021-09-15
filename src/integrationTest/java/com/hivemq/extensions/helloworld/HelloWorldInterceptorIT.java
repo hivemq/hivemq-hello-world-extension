@@ -24,6 +24,7 @@ import com.hivemq.testcontainer.junit5.HiveMQTestContainerExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.testcontainers.utility.MountableFile;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -46,7 +47,7 @@ class HelloWorldInterceptorIT {
     @RegisterExtension
     public final @NotNull HiveMQTestContainerExtension extension =
             new HiveMQTestContainerExtension()
-                    .withExtension(new File("build/hivemq-extension-test/hivemq-hello-world-extension"));
+                    .withExtension(MountableFile.forHostPath("build/hivemq-extension-test/hivemq-hello-world-extension"));
 
     @Test
     @Timeout(value = 5, unit = TimeUnit.MINUTES)
