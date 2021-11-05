@@ -37,9 +37,11 @@ public class HelloWorldMain implements ExtensionMain {
     private static final @NotNull Logger log = LoggerFactory.getLogger(HelloWorldMain.class);
 
     @Override
-    public void extensionStart(final @NotNull ExtensionStartInput extensionStartInput, final @NotNull ExtensionStartOutput extensionStartOutput) {
-        try {
+    public void extensionStart(
+            final @NotNull ExtensionStartInput extensionStartInput,
+            final @NotNull ExtensionStartOutput extensionStartOutput) {
 
+        try {
             addClientLifecycleEventListener();
             addPublishModifier();
 
@@ -52,14 +54,15 @@ public class HelloWorldMain implements ExtensionMain {
     }
 
     @Override
-    public void extensionStop(final @NotNull ExtensionStopInput extensionStopInput, final @NotNull ExtensionStopOutput extensionStopOutput) {
+    public void extensionStop(
+            final @NotNull ExtensionStopInput extensionStopInput,
+            final @NotNull ExtensionStopOutput extensionStopOutput) {
 
         final ExtensionInformation extensionInformation = extensionStopInput.getExtensionInformation();
         log.info("Stopped " + extensionInformation.getName() + ":" + extensionInformation.getVersion());
     }
 
     private void addClientLifecycleEventListener() {
-
         final EventRegistry eventRegistry = Services.eventRegistry();
 
         final HelloWorldListener helloWorldListener = new HelloWorldListener();
@@ -72,6 +75,7 @@ public class HelloWorldMain implements ExtensionMain {
 
         final HelloWorldInterceptor helloWorldInterceptor = new HelloWorldInterceptor();
 
-        initializerRegistry.setClientInitializer((initializerInput, clientContext) -> clientContext.addPublishInboundInterceptor(helloWorldInterceptor));
+        initializerRegistry.setClientInitializer(
+                (initializerInput, clientContext) -> clientContext.addPublishInboundInterceptor(helloWorldInterceptor));
     }
 }
