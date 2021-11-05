@@ -26,12 +26,10 @@ import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.testcontainers.utility.MountableFile;
 
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * This tests the functionality of the {@link HelloWorldInterceptor}.
@@ -45,9 +43,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class HelloWorldInterceptorIT {
 
     @RegisterExtension
-    public final @NotNull HiveMQTestContainerExtension extension =
-            new HiveMQTestContainerExtension()
-                    .withExtension(MountableFile.forHostPath("build/hivemq-extension-test/hivemq-hello-world-extension"));
+    final @NotNull HiveMQTestContainerExtension extension = new HiveMQTestContainerExtension()
+            .withExtension(MountableFile.forClasspathResource("hivemq-hello-world-extension"));
 
     @Test
     @Timeout(value = 5, unit = TimeUnit.MINUTES)
@@ -63,8 +60,8 @@ class HelloWorldInterceptorIT {
 
         client.publishWith().topic("hello/world").payload("Good Bye World!".getBytes(StandardCharsets.UTF_8)).send();
 
-        final Mqtt5Publish receive = publishes.receive();
-        assertTrue(receive.getPayload().isPresent());
-        assertEquals("Hello World!", new String(receive.getPayloadAsBytes(), StandardCharsets.UTF_8));
+        final Mqtt5Publish received = publishes.receive();
+        assertEquals("Hello World!", new String(received.getPayloadAsBytes(), StandardCharsets.UTF_8));
+        publishes.close();
     }
 }

@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class HelloWorldListener implements ClientLifecycleEventListener {
 
-    private static final Logger log = LoggerFactory.getLogger(HelloWorldMain.class);
+    private static final @NotNull Logger log = LoggerFactory.getLogger(HelloWorldListener.class);
 
     @Override
     public void onMqttConnectionStart(final @NotNull ConnectionStartInput connectionStartInput) {
