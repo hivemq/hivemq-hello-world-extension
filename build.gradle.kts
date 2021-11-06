@@ -50,7 +50,7 @@ license {
 /* ******************** debugging ******************** */
 
 tasks.prepareHivemqHome {
-    hivemqHomeDirectory.set(file("/your/path/to/hivemq-<VERSION>.zip"))
+    hivemqHomeDirectory.set(file("/your/path/to/hivemq-<VERSION>"))
 }
 
 tasks.runHivemqWithExtension {
