@@ -8,14 +8,13 @@
 = HiveMQ 4 Hello World Extension
 
 image:https://img.shields.io/badge/Extension_Type-Demonstration-orange?style=for-the-badge[Extension Type]
-image:https://img.shields.io/github/v/release/hivemq/hivemq-hello-world-extension?style=for-the-badge[GitHub release (latest by date), link=https://github.com/hivemq/hivemq-hello-world-extension/releases/latest]
-image:https://img.shields.io/github/license/hivemq/hivemq-hello-world-extension?style=for-the-badge&color=brightgreen[GitHub, link=LICENSE]
-image:https://img.shields.io/github/workflow/status/hivemq/hivemq-hello-world-extension/CI%20Check/master?style=for-the-badge[GitHub Workflow Status (branch), link=https://github.com/hivemq/hivemq-hello-world-extension/actions/workflows/check.yml?query=branch%3Amaster]
+image:https://img.shields.io/github/v/release/hivemq/hivemq-hello-world-extension?style=for-the-badge[GitHub release (latest by date),link=https://github.com/hivemq/hivemq-hello-world-extension/releases/latest]
+image:https://img.shields.io/github/license/hivemq/hivemq-hello-world-extension?style=for-the-badge&color=brightgreen[GitHub,link=LICENSE]
+image:https://img.shields.io/github/workflow/status/hivemq/hivemq-hello-world-extension/CI%20Check/master?style=for-the-badge[GitHub Workflow Status (branch),link=https://github.com/hivemq/hivemq-hello-world-extension/actions/workflows/check.yml?query=branch%3Amaster]
 
 == Purpose
 
-This Hello World extension sets a ClientLifecycleEventListener which logs the MQTT Version and identifier of every connecting and disconnecting client and
-registers a PublishInboundInterceptor to modify the payload of every Publish with the topic 'hello/world' to 'Hello World!'.
+This Hello World extension sets a ClientLifecycleEventListener which logs the MQTT Version and identifier of every connecting and disconnecting client and registers a PublishInboundInterceptor to modify the payload of every Publish with the topic 'hello/world' to 'Hello World!'.
 
 We strongly recommend to read the {hivemq-extension-docs}[HiveMQ Extension Documentation] to grasp the core concepts of HiveMQ extension development.
 
@@ -31,7 +30,8 @@ We strongly recommend to read the {hivemq-extension-docs}[HiveMQ Extension Docum
 
 === Manual Testing
 
-Connect with an {hivemq-mqtt-toolbox}[MQTT client] of your choice. You should see a log message with its identifier and MQTT version.
+Connect with an {hivemq-mqtt-toolbox}[MQTT client] of your choice.
+You should see a log message with its identifier and MQTT version.
 
 === Automatic Testing
 
