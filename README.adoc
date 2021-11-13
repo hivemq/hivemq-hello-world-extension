@@ -7,11 +7,10 @@
 
 = HiveMQ 4 Hello World Extension
 
-*Extension Type*: Demonstration
-
-*Version*: 4.7.2
-
-*License*: Apache License 2.0
+image:https://img.shields.io/badge/Extension_Type-Demonstration-orange?style=for-the-badge[Extension Type]
+image:https://img.shields.io/github/v/release/hivemq/hivemq-hello-world-extension?style=for-the-badge[GitHub release (latest by date), link=https://github.com/hivemq/hivemq-hello-world-extension/releases/latest]
+image:https://img.shields.io/github/license/hivemq/hivemq-hello-world-extension?style=for-the-badge&color=brightgreen[GitHub, link=LICENSE]
+image:https://img.shields.io/github/workflow/status/hivemq/hivemq-hello-world-extension/CI%20Check/master?style=for-the-badge[GitHub Workflow Status (branch), link=https://github.com/hivemq/hivemq-hello-world-extension/actions/workflows/check.yml?query=branch%3Amaster]
 
 == Purpose
 
