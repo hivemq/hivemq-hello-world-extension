@@ -20,10 +20,12 @@ import com.hivemq.client.mqtt.mqtt5.Mqtt5BlockingClient;
 import com.hivemq.client.mqtt.mqtt5.Mqtt5Client;
 import com.hivemq.client.mqtt.mqtt5.message.publish.Mqtt5Publish;
 import com.hivemq.extension.sdk.api.annotations.NotNull;
-import com.hivemq.testcontainer.junit5.HiveMQTestContainerExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
-import org.junit.jupiter.api.extension.RegisterExtension;
+import org.testcontainers.hivemq.HiveMQContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
+import org.testcontainers.utility.DockerImageName;
 import org.testcontainers.utility.MountableFile;
 
 import java.nio.charset.StandardCharsets;
@@ -40,10 +42,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Yannick Weber
  * @since 4.3.1
  */
+@Testcontainers
 class HelloWorldInterceptorIT {
 
-    @RegisterExtension
-    final @NotNull HiveMQTestContainerExtension extension = new HiveMQTestContainerExtension()
+    @Container
+    final @NotNull HiveMQContainer extension = new HiveMQContainer(DockerImageName.parse("hivemq/hivemq-ce:latest"))
             .withExtension(MountableFile.forClasspathResource("hivemq-hello-world-extension"));
 
     @Test

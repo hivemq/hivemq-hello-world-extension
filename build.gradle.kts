@@ -36,7 +36,8 @@ tasks.withType<Test>().configureEach {
 
 dependencies {
     integrationTestImplementation("com.hivemq:hivemq-mqtt-client:${property("hivemq-mqtt-client.version")}")
-    integrationTestImplementation("com.hivemq:hivemq-testcontainer-junit5:${property("hivemq-testcontainer.version")}")
+    testImplementation("org.testcontainers:junit-jupiter:${property("testcontainers.version")}")
+    testImplementation("org.testcontainers:hivemq:${property("testcontainers.version")}")
     integrationTestRuntimeOnly("ch.qos.logback:logback-classic:${property("logback.version")}")
 }
 
