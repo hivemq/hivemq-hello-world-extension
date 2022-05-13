@@ -46,7 +46,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class HelloWorldInterceptorIT {
 
     @Container
-    final @NotNull HiveMQContainer extension = new HiveMQContainer(DockerImageName.parse("hivemq/hivemq-ce:latest"))
+    final @NotNull HiveMQContainer extension = new HiveMQContainer(DockerImageName.parse("hivemq/hivemq-ce").withTag("latest"))
             .withExtension(MountableFile.forClasspathResource("hivemq-hello-world-extension"));
 
     @Test
