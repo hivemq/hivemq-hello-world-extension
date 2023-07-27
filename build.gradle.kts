@@ -1,7 +1,7 @@
 plugins {
     id("com.hivemq.extension")
+    id("io.github.sgtsilvio.gradle.defaults")
     id("com.github.hierynomus.license")
-    id("com.github.sgtsilvio.gradle.utf8")
 }
 
 group = "com.hivemq.extensions"
@@ -23,8 +23,7 @@ hivemqExtension {
 /* ******************** test ******************** */
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${property("junit-jupiter.version")}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.junit.jupiter:junit-jupiter:${property("junit-jupiter.version")}")
     testImplementation("org.mockito:mockito-core:${property("mockito.version")}")
 }
 
