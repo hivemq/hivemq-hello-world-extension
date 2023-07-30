@@ -1,7 +1,7 @@
 plugins {
-    id("com.hivemq.extension")
-    id("io.github.sgtsilvio.gradle.defaults")
-    id("com.github.hierynomus.license")
+    alias(libs.plugins.hivemq.extension)
+    alias(libs.plugins.defaults)
+    alias(libs.plugins.license)
 }
 
 group = "com.hivemq.extensions"
@@ -23,8 +23,8 @@ hivemqExtension {
 /* ******************** test ******************** */
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter:${property("junit-jupiter.version")}")
-    testImplementation("org.mockito:mockito-core:${property("mockito.version")}")
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.mockito)
 }
 
 tasks.withType<Test>().configureEach {
@@ -34,10 +34,10 @@ tasks.withType<Test>().configureEach {
 /* ******************** integration test ******************** */
 
 dependencies {
-    integrationTestImplementation("com.hivemq:hivemq-mqtt-client:${property("hivemq-mqtt-client.version")}")
-    integrationTestImplementation("org.testcontainers:junit-jupiter:${property("testcontainers.version")}")
-    integrationTestImplementation("org.testcontainers:hivemq:${property("testcontainers.version")}")
-    integrationTestRuntimeOnly("ch.qos.logback:logback-classic:${property("logback.version")}")
+    integrationTestImplementation(libs.hivemq.mqttClient)
+    integrationTestImplementation(libs.testcontainers.jupiter)
+    integrationTestImplementation(libs.testcontainers.hivemq)
+    integrationTestRuntimeOnly(libs.logback.classic)
 }
 
 /* ******************** checks ******************** */
