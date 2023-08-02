@@ -35,7 +35,7 @@ tasks.withType<Test>().configureEach {
 
 dependencies {
     integrationTestImplementation(libs.hivemq.mqttClient)
-    integrationTestImplementation(libs.testcontainers.jupiter)
+    integrationTestImplementation(libs.testcontainers.junitJupiter)
     integrationTestImplementation(libs.testcontainers.hivemq)
     integrationTestRuntimeOnly(libs.logback.classic)
 }
