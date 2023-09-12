@@ -20,24 +20,27 @@ hivemqExtension {
     }
 }
 
-/* ******************** test ******************** */
-
-dependencies {
-    testImplementation(libs.junit.jupiter)
-    testImplementation(libs.mockito)
-}
-
-tasks.withType<Test>().configureEach {
-    useJUnitPlatform()
-}
-
-/* ******************** integration test ******************** */
-
-dependencies {
-    integrationTestImplementation(libs.hivemq.mqttClient)
-    integrationTestImplementation(libs.testcontainers.junitJupiter)
-    integrationTestImplementation(libs.testcontainers.hivemq)
-    integrationTestRuntimeOnly(libs.logback.classic)
+@Suppress("UnstableApiUsage")
+testing {
+    suites {
+        withType<JvmTestSuite> {
+            useJUnitJupiter(libs.versions.junit.jupiter)
+        }
+        "test"(JvmTestSuite::class) {
+            dependencies {
+                implementation(libs.mockito)
+            }
+        }
+        "integrationTest"(JvmTestSuite::class) {
+            dependencies {
+                compileOnly(libs.jetbrains.annotations)
+                implementation(libs.hivemq.mqttClient)
+                implementation(libs.testcontainers.junitJupiter)
+                implementation(libs.testcontainers.hivemq)
+                runtimeOnly(libs.logback.classic)
+            }
+        }
+    }
 }
 
 /* ******************** checks ******************** */
