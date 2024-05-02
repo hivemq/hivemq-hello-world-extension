@@ -8,12 +8,12 @@ group = "com.hivemq.extensions"
 description = "HiveMQ 4 Hello World Extension - a simple reference for all extension developers"
 
 hivemqExtension {
-    name.set("Hello World Extension")
-    author.set("HiveMQ")
-    priority.set(1000)
-    startPriority.set(1000)
-    mainClass.set("$group.helloworld.HelloWorldMain")
-    sdkVersion.set("$version")
+    name = "Hello World Extension"
+    author = "HiveMQ"
+    priority = 1000
+    startPriority = 1000
+    mainClass = "$group.helloworld.HelloWorldMain"
+    sdkVersion = "$version"
 
     resources {
         from("LICENSE")
@@ -43,8 +43,6 @@ testing {
     }
 }
 
-/* ******************** checks ******************** */
-
 license {
     header = rootDir.resolve("HEADER")
     mapping("java", "SLASHSTAR_STYLE")
@@ -53,11 +51,11 @@ license {
 /* ******************** debugging ******************** */
 
 tasks.prepareHivemqHome {
-    hivemqHomeDirectory.set(file("/your/path/to/hivemq-<VERSION>"))
+    hivemqHomeDirectory = file("/your/path/to/hivemq-<VERSION>")
 }
 
 tasks.runHivemqWithExtension {
     debugOptions {
-        enabled.set(false)
+        enabled = false
     }
 }
