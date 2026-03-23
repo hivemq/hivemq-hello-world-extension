@@ -7,6 +7,12 @@ plugins {
 group = "com.hivemq.extensions"
 description = "HiveMQ 4 Hello World Extension - a simple reference for all extension developers"
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 hivemqExtension {
     name = "Hello World Extension"
     author = "HiveMQ"
