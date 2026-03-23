@@ -40,20 +40,19 @@ public class HelloWorldListener implements ClientLifecycleEventListener {
         final MqttVersion version = connectionStartInput.getConnectPacket().getMqttVersion();
         switch (version) {
             case V_5:
-                log.info("MQTT 5 client connected with id: {} ", connectionStartInput.getClientInformation().getClientId());
+                log.info("MQTT 5 client connected with id: {}", connectionStartInput.getClientInformation().getClientId());
                 break;
             case V_3_1_1:
-                log.info("MQTT 3.1.1 client connected with id: {} ", connectionStartInput.getClientInformation().getClientId());
+                log.info("MQTT 3.1.1 client connected with id: {}", connectionStartInput.getClientInformation().getClientId());
                 break;
             case V_3_1:
-                log.info("MQTT 3.1 client connected with id: {} ", connectionStartInput.getClientInformation().getClientId());
+                log.info("MQTT 3.1 client connected with id: {}", connectionStartInput.getClientInformation().getClientId());
                 break;
         }
     }
 
     @Override
     public void onAuthenticationSuccessful(final @NotNull AuthenticationSuccessfulInput authenticationSuccessfulInput) {
-
     }
 
     @Override

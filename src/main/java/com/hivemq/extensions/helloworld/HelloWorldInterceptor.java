@@ -37,7 +37,6 @@ public class HelloWorldInterceptor implements PublishInboundInterceptor {
     public void onInboundPublish(
             final @NotNull PublishInboundInput publishInboundInput,
             final @NotNull PublishInboundOutput publishInboundOutput) {
-
         final ModifiablePublishPacket publishPacket = publishInboundOutput.getPublishPacket();
         if ("hello/world".equals(publishPacket.getTopic())) {
             final ByteBuffer payload = ByteBuffer.wrap("Hello World!".getBytes(StandardCharsets.UTF_8));

@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * This tests the functionality of the {@link HelloWorldInterceptor}.
+ * This tests the functionality of the {@code HelloWorldInterceptor}.
  * It uses the HiveMQ Testcontainer to automatically package and deploy this extension inside a HiveMQ docker container.
  * <p>
  * This integration test MUST be executed by Gradle as the extension is built by the 'hivemqExtensionZip' task.

@@ -18,7 +18,11 @@ package com.hivemq.extensions.helloworld;
 import com.hivemq.extension.sdk.api.ExtensionMain;
 import com.hivemq.extension.sdk.api.annotations.NotNull;
 import com.hivemq.extension.sdk.api.events.EventRegistry;
-import com.hivemq.extension.sdk.api.parameter.*;
+import com.hivemq.extension.sdk.api.parameter.ExtensionInformation;
+import com.hivemq.extension.sdk.api.parameter.ExtensionStartInput;
+import com.hivemq.extension.sdk.api.parameter.ExtensionStartOutput;
+import com.hivemq.extension.sdk.api.parameter.ExtensionStopInput;
+import com.hivemq.extension.sdk.api.parameter.ExtensionStopOutput;
 import com.hivemq.extension.sdk.api.services.Services;
 import com.hivemq.extension.sdk.api.services.intializer.InitializerRegistry;
 import org.slf4j.Logger;
@@ -40,14 +44,12 @@ public class HelloWorldMain implements ExtensionMain {
     public void extensionStart(
             final @NotNull ExtensionStartInput extensionStartInput,
             final @NotNull ExtensionStartOutput extensionStartOutput) {
-
         try {
             addClientLifecycleEventListener();
             addPublishModifier();
 
             final ExtensionInformation extensionInformation = extensionStartInput.getExtensionInformation();
-            log.info("Started " + extensionInformation.getName() + ":" + extensionInformation.getVersion());
-
+            log.info("Started {}:{}", extensionInformation.getName(), extensionInformation.getVersion());
         } catch (final Exception e) {
             log.error("Exception thrown at extension start: ", e);
         }
@@ -57,9 +59,8 @@ public class HelloWorldMain implements ExtensionMain {
     public void extensionStop(
             final @NotNull ExtensionStopInput extensionStopInput,
             final @NotNull ExtensionStopOutput extensionStopOutput) {
-
         final ExtensionInformation extensionInformation = extensionStopInput.getExtensionInformation();
-        log.info("Stopped " + extensionInformation.getName() + ":" + extensionInformation.getVersion());
+        log.info("Stopped {}:{}", extensionInformation.getName(), extensionInformation.getVersion());
     }
 
     private void addClientLifecycleEventListener() {
