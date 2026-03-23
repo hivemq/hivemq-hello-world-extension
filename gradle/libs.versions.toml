@@ -17,4 +17,4 @@ testcontainers-junitJupiter = { module = "org.testcontainers:junit-jupiter", ver
 [plugins]
 hivemq-extension = { id = "com.hivemq.extension", version = "4.0.0" }
 defaults = { id = "io.github.sgtsilvio.gradle.defaults", version = "0.3.0" }
-license = { id = "com.github.hierynomus.license", version = "0.16.1" }
+spotless = { id = "com.diffplug.spotless", version = "8.4.0" }
