@@ -33,7 +33,6 @@ import org.slf4j.LoggerFactory;
  * which is instantiated either during the HiveMQ start up process (if extension is enabled)
  * or when HiveMQ is already started by enabling the extension.
  *
- * @author Florian Limpöck
  * @since 4.0.0
  */
 public class HelloWorldMain implements ExtensionMain {

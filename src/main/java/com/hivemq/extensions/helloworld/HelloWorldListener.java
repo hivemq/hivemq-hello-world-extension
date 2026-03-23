@@ -28,7 +28,6 @@ import org.slf4j.LoggerFactory;
  * This is a very simple {@link ClientLifecycleEventListener}
  * which logs the MQTT version and identifier of every connecting client.
  *
- * @author Florian Limpöck
  * @since 4.0.0
  */
 public class HelloWorldListener implements ClientLifecycleEventListener {

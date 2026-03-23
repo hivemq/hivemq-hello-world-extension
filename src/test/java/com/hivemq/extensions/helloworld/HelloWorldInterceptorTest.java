@@ -29,9 +29,6 @@ import java.nio.charset.StandardCharsets;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-/**
- * @author Yannick Weber
- */
 class HelloWorldInterceptorTest {
 
     private @NotNull HelloWorldInterceptor helloWorldInterceptor;

@@ -39,7 +39,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * <p>
  * This integration test MUST be executed by Gradle as the extension is built by the 'hivemqExtensionZip' task.
  *
- * @author Yannick Weber
  * @since 4.3.1
  */
 @Testcontainers
