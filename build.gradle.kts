@@ -9,6 +9,12 @@ description = "HiveMQ 4 Hello World Extension - a simple reference for all exten
 
 java {
     toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+tasks.compileJava {
+    javaCompiler = javaToolchains.compilerFor {
         languageVersion = JavaLanguageVersion.of(21)
     }
 }
