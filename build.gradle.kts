@@ -32,11 +32,27 @@ hivemqExtension {
     }
 }
 
+val mockitoAgent = configurations.create("mockitoAgent") {
+    isCanBeConsumed = false
+    isCanBeResolved = true
+}
+dependencies {
+    mockitoAgent(libs.mockito) { isTransitive = false }
+}
+class MockitoAgentArgumentProvider(@get:Classpath val agentJar: FileCollection) : CommandLineArgumentProvider {
+    override fun asArguments(): Iterable<String> = listOf("-javaagent:${agentJar.singleFile}")
+}
+
 @Suppress("UnstableApiUsage")
 testing {
     suites {
         withType<JvmTestSuite> {
             useJUnitJupiter(libs.versions.junit.jupiter)
+            targets.configureEach {
+                testTask {
+                    jvmArgumentProviders.add(MockitoAgentArgumentProvider(mockitoAgent))
+                }
+            }
         }
         "test"(JvmTestSuite::class) {
             dependencies {
