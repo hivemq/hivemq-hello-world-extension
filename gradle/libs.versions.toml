@@ -3,7 +3,7 @@ hivemq-mqttClient = "1.4.0"
 jetbrains-annotations = "26.1.0"
 junit-jupiter = "5.10.2"
 logback = "1.6.3"
-mockito = "5.23.0"
+mockito = "5.24.0"
 testcontainers = "1.21.4"
 
 [libraries]
